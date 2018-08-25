@@ -1,0 +1,50 @@
+table.tableClass1 th:nth-child(1),
+table.tableClass1 td:nth-child(1) {
+  width: 120px;
+}
+table.tableClass1 th:nth-child(2),
+table.tableClass1 td:nth-child(2) {
+  width: 200px;
+}
+table.tableClass1 th:nth-child(3),
+table.tableClass1 td:nth-child(3) {
+  width: 160px;
+}
+table.tableClass1 th:nth-child(4),
+table.tableClass1 td:nth-child(4) {
+  width: 300px;
+}
+
+table.tableClass2 th:nth-child(1),
+table.tableClass2 td:nth-child(1) {
+  width: 20%;
+}
+table.tableClass2 th:nth-child(2),
+table.tableClass2 td:nth-child(2) {
+  width: 40%;
+}
+table.tableClass2 th:nth-child(3),
+table.tableClass2 td:nth-child(3) {
+  width: 30%;
+}
+table.tableClass2 th:nth-child(4),
+table.tableClass2 td:nth-child(4) {
+  width: 10%;
+}
+
+table.tableClass3 th:nth-child(1),
+table.tableClass3 td:nth-child(1) {
+  width: 90px;
+}
+table.tableClass3 th:nth-child(2),
+table.tableClass3 td:nth-child(2) {
+  width: auto;
+}
+table.tableClass3 th:nth-child(3),
+table.tableClass3 td:nth-child(3) {
+  width: 200px;
+}
+table.tableClass3 th:nth-child(4),
+table.tableClass3 td:nth-child(4) {
+  width: 120px;
+}

@@ -1,0 +1,295 @@
+.tableGrid * {
+  box-sizing: border-box;
+}
+
+.tableGrid-column {
+  padding: 8px 16px 8px 0px;
+}
+
+.has-columnBorders .tableGrid-column {
+  padding: 8px;
+}
+
+.cssgrid .tableGrid-row {
+  display: -ms-grid;
+  display: grid;
+}
+.cssgrid .tableGrid.has-columnBorders .tableGrid-column {
+  border-top: 1px solid #e5e5e5;
+  border-left: 1px solid #e5e5e5;
+}
+.cssgrid .tableGrid.has-columnBorders .tableGrid-column:last-child {
+  border-right: 1px solid #e5e5e5;
+}
+.cssgrid .tableGrid.has-columnBorders .tableGrid-body .tableGrid-row:last-child .tableGrid-column {
+  border-bottom: 1px solid #e5e5e5;
+}
+.cssgrid .tableGrid.has-rowBorders .tableGrid-row .tableGrid-column {
+  border-bottom: 1px solid #e5e5e5;
+}
+.cssgrid .tableGrid.is-dataTable .tableGrid-header .tableGrid-column {
+  background: #f4f4f4;
+}
+.cssgrid .tableGrid.has-stripes .tableGrid-body .tableGrid-row:nth-child(even) .tableGrid-column {
+  background: #f8f9f9;
+}
+
+.no-cssgrid .tableGrid {
+  border-collapse: collapse;
+}
+.no-cssgrid .tableGrid-header,
+.no-cssgrid .tableGrid-body {
+  display: table;
+  width: 100%;
+}
+.no-cssgrid .tableGrid .tableGrid-row {
+  display: table-row;
+}
+.no-cssgrid .tableGrid .tableGrid-column {
+  display: table-cell;
+  vertical-align: middle;
+}
+.no-cssgrid .tableGrid.has-columnBorders .tableGrid-column {
+  border: 1px solid #e5e5e5;
+}
+.no-cssgrid .tableGrid.has-columnBorders .tableGrid-body .tableGrid-column {
+  border-top: 0;
+}
+.no-cssgrid .tableGrid.has-rowBorders .tableGrid-row .tableGrid-column {
+  border-bottom: 1px solid #e5e5e5;
+}
+.no-cssgrid .tableGrid.is-dataTable .tableGrid-header .tableGrid-row {
+  background: #f4f4f4;
+}
+.no-cssgrid .tableGrid.has-stripes .tableGrid-body .tableGrid-row:nth-child(even) {
+  background: #f8f9f9;
+}
+
+#ex-1 .tableGrid-row .tableGrid-column:nth-child(1) {
+  -ms-grid-column: 1;
+  grid-column: 1;
+}
+#ex-1 .tableGrid-row .tableGrid-column:nth-child(2) {
+  -ms-grid-column: 2;
+  grid-column: 2;
+}
+#ex-1 .tableGrid-row .tableGrid-column:nth-child(3) {
+  -ms-grid-column: 3;
+  grid-column: 3;
+}
+#ex-1 .tableGrid-row .tableGrid-column:nth-child(4) {
+  -ms-grid-column: 4;
+  grid-column: 4;
+}
+#ex-1 .tableGrid-row .tableGrid-column:nth-child(5) {
+  -ms-grid-column: 5;
+  grid-column: 5;
+}
+#ex-1 .tableGrid-row {
+  -ms-grid-columns: (1fr)[5];
+  grid-template-columns: repeat(5, 1fr);
+}
+.no-cssgrid #ex-1 .tableGrid-row .tableGrid-column:nth-child(1) {
+  width: 20%;
+}
+.no-cssgrid #ex-1 .tableGrid-row .tableGrid-column:nth-child(2) {
+  width: 20%;
+}
+.no-cssgrid #ex-1 .tableGrid-row .tableGrid-column:nth-child(3) {
+  width: 20%;
+}
+.no-cssgrid #ex-1 .tableGrid-row .tableGrid-column:nth-child(4) {
+  width: 20%;
+}
+.no-cssgrid #ex-1 .tableGrid-row .tableGrid-column:nth-child(5) {
+  width: 20%;
+}
+
+#ex-2 .tableGrid-row .tableGrid-column:nth-child(1) {
+  -ms-grid-column: 1;
+  grid-column: 1;
+}
+#ex-2 .tableGrid-row .tableGrid-column:nth-child(2) {
+  -ms-grid-column: 2;
+  grid-column: 2;
+}
+#ex-2 .tableGrid-row .tableGrid-column:nth-child(3) {
+  -ms-grid-column: 3;
+  grid-column: 3;
+}
+#ex-2 .tableGrid-row .tableGrid-column:nth-child(4) {
+  -ms-grid-column: 4;
+  grid-column: 4;
+}
+#ex-2 .tableGrid-row .tableGrid-column:nth-child(5) {
+  -ms-grid-column: 5;
+  grid-column: 5;
+}
+#ex-2 .tableGrid-row {
+  -ms-grid-columns: (1fr)[5];
+  grid-template-columns: repeat(5, 1fr);
+}
+.no-cssgrid #ex-2 .tableGrid-row .tableGrid-column:nth-child(1) {
+  width: 20%;
+}
+.no-cssgrid #ex-2 .tableGrid-row .tableGrid-column:nth-child(2) {
+  width: 20%;
+}
+.no-cssgrid #ex-2 .tableGrid-row .tableGrid-column:nth-child(3) {
+  width: 20%;
+}
+.no-cssgrid #ex-2 .tableGrid-row .tableGrid-column:nth-child(4) {
+  width: 20%;
+}
+.no-cssgrid #ex-2 .tableGrid-row .tableGrid-column:nth-child(5) {
+  width: 20%;
+}
+
+#ex-3 .tableGrid-row .tableGrid-column:nth-child(1) {
+  -ms-grid-column: 1;
+  grid-column: 1;
+}
+#ex-3 .tableGrid-row .tableGrid-column:nth-child(2) {
+  -ms-grid-column: 2;
+  grid-column: 2;
+}
+#ex-3 .tableGrid-row .tableGrid-column:nth-child(3) {
+  -ms-grid-column: 3;
+  grid-column: 3;
+}
+#ex-3 .tableGrid-row .tableGrid-column:nth-child(4) {
+  -ms-grid-column: 4;
+  grid-column: 4;
+}
+#ex-3 .tableGrid-row .tableGrid-column:nth-child(5) {
+  -ms-grid-column: 5;
+  grid-column: 5;
+}
+#ex-3 .tableGrid-row {
+  -ms-grid-columns: (1fr)[5];
+  grid-template-columns: repeat(5, 1fr);
+}
+.no-cssgrid #ex-3 .tableGrid-row .tableGrid-column:nth-child(1) {
+  width: 20%;
+}
+.no-cssgrid #ex-3 .tableGrid-row .tableGrid-column:nth-child(2) {
+  width: 20%;
+}
+.no-cssgrid #ex-3 .tableGrid-row .tableGrid-column:nth-child(3) {
+  width: 20%;
+}
+.no-cssgrid #ex-3 .tableGrid-row .tableGrid-column:nth-child(4) {
+  width: 20%;
+}
+.no-cssgrid #ex-3 .tableGrid-row .tableGrid-column:nth-child(5) {
+  width: 20%;
+}
+
+#ex-4 .tableGrid-row .tableGrid-column:nth-child(1) {
+  -ms-grid-column: 1;
+  grid-column: 1;
+}
+#ex-4 .tableGrid-row .tableGrid-column:nth-child(2) {
+  -ms-grid-column: 2;
+  grid-column: 2;
+}
+#ex-4 .tableGrid-row .tableGrid-column:nth-child(3) {
+  -ms-grid-column: 3;
+  grid-column: 3;
+}
+#ex-4 .tableGrid-row .tableGrid-column:nth-child(4) {
+  -ms-grid-column: 4;
+  grid-column: 4;
+}
+#ex-4 .tableGrid-row .tableGrid-column:nth-child(5) {
+  -ms-grid-column: 5;
+  grid-column: 5;
+}
+#ex-4 .tableGrid-row {
+  -ms-grid-columns: (1fr)[5];
+  grid-template-columns: repeat(5, 1fr);
+}
+.no-cssgrid #ex-4 .tableGrid-row .tableGrid-column:nth-child(1) {
+  width: 20%;
+}
+.no-cssgrid #ex-4 .tableGrid-row .tableGrid-column:nth-child(2) {
+  width: 20%;
+}
+.no-cssgrid #ex-4 .tableGrid-row .tableGrid-column:nth-child(3) {
+  width: 20%;
+}
+.no-cssgrid #ex-4 .tableGrid-row .tableGrid-column:nth-child(4) {
+  width: 20%;
+}
+.no-cssgrid #ex-4 .tableGrid-row .tableGrid-column:nth-child(5) {
+  width: 20%;
+}
+
+#ex-5 .tableGrid-row .tableGrid-column:nth-child(1) {
+  -ms-grid-column: 1;
+  grid-column: 1;
+}
+#ex-5 .tableGrid-row .tableGrid-column:nth-child(2) {
+  -ms-grid-column: 2;
+  grid-column: 2;
+}
+#ex-5 .tableGrid-row .tableGrid-column:nth-child(3) {
+  -ms-grid-column: 3;
+  grid-column: 3;
+}
+#ex-5 .tableGrid-row .tableGrid-column:nth-child(4) {
+  -ms-grid-column: 4;
+  grid-column: 4;
+}
+#ex-5 .tableGrid-row .tableGrid-column:nth-child(5) {
+  -ms-grid-column: 5;
+  grid-column: 5;
+}
+#ex-5 .tableGrid-row {
+  -ms-grid-columns: (1fr)[5];
+  grid-template-columns: repeat(5, 1fr);
+}
+.no-cssgrid #ex-5 .tableGrid-row .tableGrid-column:nth-child(1) {
+  width: 20%;
+}
+.no-cssgrid #ex-5 .tableGrid-row .tableGrid-column:nth-child(2) {
+  width: 20%;
+}
+.no-cssgrid #ex-5 .tableGrid-row .tableGrid-column:nth-child(3) {
+  width: 20%;
+}
+.no-cssgrid #ex-5 .tableGrid-row .tableGrid-column:nth-child(4) {
+  width: 20%;
+}
+.no-cssgrid #ex-5 .tableGrid-row .tableGrid-column:nth-child(5) {
+  width: 20%;
+}
+
+#ex-6 .tableGrid-row .tableGrid-column:nth-child(1) {
+  -ms-grid-column: 1;
+  grid-column: 1;
+}
+#ex-6 .tableGrid-row .tableGrid-column:nth-child(2) {
+  -ms-grid-column: 2;
+  grid-column: 2;
+}
+#ex-6 .tableGrid-row .tableGrid-column:nth-child(3) {
+  -ms-grid-column: 3;
+  grid-column: 3;
+}
+#ex-6 .tableGrid-row {
+  -ms-grid-columns: 130px 200px 80px;
+  grid-template-columns: 130px 200px 80px;
+}
+.no-cssgrid #ex-6 {
+  width: 410px;
+}
+.no-cssgrid #ex-6 .tableGrid-row .tableGrid-column:nth-child(1) {
+  width: 130px;
+}
+.no-cssgrid #ex-6 .tableGrid-row .tableGrid-column:nth-child(2) {
+  width: 200px;
+}
+.no-cssgrid #ex-6 .tableGrid-row .tableGrid-column:nth-child(3) {
+  width: 80px;
+}
