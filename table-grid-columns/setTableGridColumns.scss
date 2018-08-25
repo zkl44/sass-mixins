@@ -1,0 +1,92 @@
+/* 
+  - SASS Mixin for setting table like structure using CSS grid
+  - Included is a fallback using display table,table-row,table-cell
+  - Accepts any length unit as well as "auto" (check your browser support)
+  - Additional CSS needed for default grid styles (see tableGrid.scss)
+  - Relies on specific HTML/Classes (see tableGrid.scss for details)
+  - This fallback requires a class to be applied in browsers that do not supports CSS grid (.no-cssgrid)
+*/
+
+@mixin setTableGridColumns($widths...) {
+	$resultArray: (); //all widths will be added to this array for CSS output without commas
+	$autoColumns: true; //this value gets set to false if at least one width is not auto
+	$n: 1; //needed to track nth-child and column index
+	$row: ".tableGrid-row"; //each row gets grid-template-columns applied for widths
+	$column: ".tableGrid-column:nth-child(" + $n + ")"; //each column will get index assigned to it
+		
+	@each $width in $widths {
+		@if length($width) == 1 {
+			@if $width != auto {
+				$autoColumns: false;
+			}
+			
+			$resultArray: append($resultArray, $width);
+			//Browsers that support CSS Grid
+			//output CSS applied to each column to place it correctly
+			#{$row} #{$column} {
+			  -ms-grid-column: $n;
+		      grid-column: $n;
+			}
+		}
+		
+		$n: $n + 1; //adds 1 to n before starting new loop
+		$column: ".tableGrid-column:nth-child(" + $n + ")";
+	}
+	
+	$resultArrayCount: length($resultArray); //length needed for repeat count on auto widths
+	
+	//since setting all widths to auto produces unexpected column sizing between rows -
+	//auto is replaced with 1fr for equal widths, regardless of content
+	@if $autoColumns == true {
+		//output CSS applied to row for setting widths auto (equal widths)
+		
+		//Browsers that support CSS Grid
+		#{$row} {
+			-ms-grid-columns: unquote("(" + 1fr + ")")#{unquote("[" + $resultArrayCount + "]")};
+			grid-template-columns: repeat($resultArrayCount, 1fr);
+		}
+	} @else {
+		//output CSS applied to row for setting widths that do not use auto (px,%)
+		//Browsers that support CSS Grid
+		#{$row} {
+			-ms-grid-columns: $resultArray;
+			grid-template-columns: $resultArray;
+		}
+	}
+	
+	// Fallback for Browsers that DO NOT Support CSS Grid - display table-row, and table cell
+	// Can be removed if not needed
+	$i: 1; //needed to track nth-child and column index
+	$fixedColumns: true; //this value gets set to false if at least one width is auto
+	$fixedColumnsTotalValue: 0;
+	$column: ".tableGrid-column:nth-child(" + $i + ")"; //each column will get index assigned to it
+	
+	//class added with Modernizr for browsers that do not support CSS Grid
+	@at-root .no-cssgrid #{&} {
+	  
+	  @each $width in $widths {
+  		@if length($width) == 1 {
+  			@if $width == auto {
+				  $fixedColumns: false;
+			 } @else {
+				  $fixedColumnsTotalValue: $fixedColumnsTotalValue + $width;
+			 }
+  			#{$row} #{$column} {
+    		  @if $autoColumns == true {
+    		    //setting width with percents since fr is not a supported unit
+      			width: 100% / $resultArrayCount;
+    			} @else {
+    				//output CSS applied to row for setting widths that do not use auto (px,%)
+    				width: $width;
+    			}
+      		}
+  		}
+		
+  		$i: $i + 1; //adds 1 to i before starting new loop
+  		$column: ".tableGrid-column:nth-child(" + $i + ")";
+	  }
+	  @if $fixedColumns == true {
+	    width: $fixedColumnsTotalValue; //sets width on container if all columns are fixed widths
+	  }
+	} //end of unsupported Grid fallback
+}

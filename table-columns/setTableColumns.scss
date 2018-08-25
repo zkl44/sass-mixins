@@ -1,0 +1,36 @@
+/*
+  - SASS Mixin for setting table column widths
+  - Accepts any length unit as well as "auto"
+  - How to use:
+      table.tableClass1 {
+        @include setTableColumns(120px,200px,160px,300px);
+      }
+      table.tableClass2 {
+        @include setTableColumns(20%,40%,30%,10%);
+      }
+      table.tableClass3 {
+        @include setTableColumns(90px,auto,200px,120px);
+      } 
+*/
+
+@mixin setTableColumns($widths...) {
+	$n: 1;
+	$th: "th:nth-child(" + $n + ")";
+	$td: "td:nth-child(" + $n + ")";
+
+	@each $width in $widths {
+		#{$th},
+		#{$td} {
+			@if length($width) == 1 {
+				@if $width == auto {
+					width: auto;
+				} @else {
+					width: $width * 1;
+				}
+			}
+		}
+		$n: $n + 1;
+		$th: "th:nth-child(" + $n + ")";
+		$td: "td:nth-child(" + $n + ")";
+	}
+}

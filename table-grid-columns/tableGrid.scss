@@ -1,0 +1,112 @@
+/**************************************************************************
+tableGrid
+
+Version: 1.0
+
+Optional Classes: has-columnBorders, has-rowBorders, has-stripes, is-dataTable
+
+Structure:	<div class="tableGrid" role="grid">
+				<div class="tableGrid-header">
+					<div class="tableGrid-row" role="row">
+						<div class="tableGrid-column" role="columnheader"></div>
+						<div class="tableGrid-column" role="columnheader"></div>
+						<div class="tableGrid-column" role="columnheader"></div>
+						<div class="tableGrid-column" role="columnheader"></div>
+					</div>
+				</div>
+				<div class="tableGrid-body">
+					<div class="tableGrid-row" role="row">
+						<div class="tableGrid-column" role="gridcell"></div>
+						<div class="tableGrid-column" role="gridcell"></div>
+						<div class="tableGrid-column" role="gridcell"></div>
+						<div class="tableGrid-column" role="gridcell"></div>
+					</div>
+				</div>
+			</div>
+
+Sizing Columns: .ex_1 {
+				  @include tableGridColumns(auto, auto, auto, auto); CSS output => grid-template-columns: repeat(4, 1fr);
+				}
+				.ex_2 {
+				  @include tableGridColumns(100px, 50px, 300px, auto); CSS output => grid-template-columns: 100px 50px 300px auto;
+				}
+				.ex_3 {
+				  @include tableGridColumns(20%, 30%, 40%, 10%); CSS output => grid-template-columns: 20%, 30%, 40%, 10%;
+				}
+
+***************************************************************************/
+//Variables
+$dataTableCellBorder : #e5e5e5;
+$dataTableHeaderBackground: #f4f4f4;
+$dataTableRowEven : #f8f9f9;
+
+.tableGrid * {
+	box-sizing: border-box;
+}
+.tableGrid-column {
+	padding: 8px 16px 8px 0px;
+}
+.has-columnBorders .tableGrid-column {
+	padding: 8px;
+}
+// Browsers that support CSS Grid - using Modernizr class "cssgrid"
+.cssgrid {
+	.tableGrid-row {
+		display: -ms-grid; // can remove when autoprefixer is used
+		display: grid;
+	}
+	.tableGrid.has-columnBorders .tableGrid-column {
+		border-top: 1px solid $dataTableCellBorder;
+		border-left: 1px solid $dataTableCellBorder;
+	}
+	.tableGrid.has-columnBorders .tableGrid-column:last-child {
+		border-right: 1px solid $dataTableCellBorder;
+	}
+	.tableGrid.has-columnBorders .tableGrid-body .tableGrid-row:last-child .tableGrid-column {
+		border-bottom: 1px solid $dataTableCellBorder;
+	}
+	.tableGrid.has-rowBorders .tableGrid-row .tableGrid-column {
+		border-bottom: 1px solid $dataTableCellBorder;
+	}
+	.tableGrid.is-dataTable .tableGrid-header .tableGrid-column {
+		background: $dataTableHeaderBackground;
+	}
+	.tableGrid.has-stripes .tableGrid-body .tableGrid-row:nth-child(even) .tableGrid-column {
+		background: $dataTableRowEven;
+	}
+}
+
+// Browsers that do not support CSS Grid - using Modernizr class "no-cssgrid"
+// note - if all widths are passed fixed units, the total calulation is added as a width to container
+.no-cssgrid {
+	.tableGrid {
+		border-collapse: collapse;
+	}
+	.tableGrid-header,
+	.tableGrid-body {
+		display: table;
+		width: 100%;
+	}
+	.tableGrid .tableGrid-row {
+		display: table-row;
+	}
+	.tableGrid .tableGrid-column {
+		display: table-cell;
+		vertical-align: middle;
+	}
+	.tableGrid.has-columnBorders .tableGrid-column {
+		border: 1px solid $dataTableCellBorder;
+	}
+	.tableGrid.has-columnBorders .tableGrid-body .tableGrid-column {
+		border-top: 0;
+	}
+	.tableGrid.has-rowBorders .tableGrid-row .tableGrid-column {
+		border-bottom: 1px solid $dataTableCellBorder;
+	}
+	.tableGrid.is-dataTable .tableGrid-header .tableGrid-row {
+		background: $dataTableHeaderBackground;
+	}
+	.tableGrid.has-stripes .tableGrid-body .tableGrid-row:nth-child(even) {
+		background: $dataTableRowEven;
+	}
+}
